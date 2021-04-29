@@ -20,7 +20,8 @@ case 'commentaires' :
   if (is_null($com_id)) {
     switch($method) {
     case 'GET':
-      $parametres = parse_str($_SERVER['QUERY_STRING']);
+      $parametres = array();
+      parse_str($_SERVER['QUERY_STRING'], $parametres);
       if (isset($parametres['projet'])) {
         echo afficherCommentairesDuProjet($parametres['projet']);
       } else {
