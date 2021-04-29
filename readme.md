@@ -37,7 +37,8 @@ Enjoy <3
 - Partie "Projets" : 
     - Implémentation des points manquants des formulaires
     - Gestion des catégories = types projets
-- Partie "Commentaires" : 
+- Partie "Commentaires" :
+(Il manque juste commentaires.html et appCommentaire.js)
     - Ajouter un commentaire 
     - Voir tous les commentaires d'un projet 
     - Supprimer un commentaire 
