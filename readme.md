@@ -33,16 +33,17 @@ Enjoy <3
     - Voir un profil 
     - Supprimer un profil 
 
-## Ce qui reste à faire 
-- Partie "Projets" : 
-    - Implémentation des points manquants des formulaires
-    - Gestion des catégories = types projets
 - Partie "Commentaires" :
-(Il manque juste commentaires.html et appCommentaire.js)
     - Ajouter un commentaire 
     - Voir tous les commentaires d'un projet 
     - Supprimer un commentaire 
     - Modifier un commentaire ? 
+
+## Ce qui reste à faire 
+- Partie "Projets" : 
+    - Implémentation des points manquants des formulaires
+    - Gestion des catégories = types projets
+
 - Assemblage 
     - Lier commentaires et projets 
     - Lier projets et profil 
