@@ -25,7 +25,7 @@
 	/* Récupérer un seul projet par son ID (unique) */ 
 	function getProjetByID($id) {
 		$cnx = connection();
-		$rqt = $cnx->prepare('SELECT * FROM Projet WHERE idProjet = ?');
+		$rqt = $cnx->prepare("SELECT Projet.*, utilisateur.nom, utilisateur.prenom FROM Projet, utilisateur WHERE Projet.idProjet = ? AND Projet.RefAuteurProjet=utilisateur.idUser");
 		$rqt->execute(array($id));
 		return $rqt->fetch();
 	}

@@ -17,7 +17,7 @@ document.ready(() => {
 	// certaines zones sont cachées (activables par bouton)
 	document.getElementById('voirProjet').style.display = 'none';
 	document.getElementById('upProjet').style.display = 'none';
-
+	
 	// récupération de tous les projets 
 	fetch("./router.php/projets", { method: 'GET' })
 		.then(response => response.json())
@@ -161,6 +161,7 @@ function displayOneProject(projet) {
 	document.getElementById('desc').innerHTML = projet.presentation;
 	document.getElementById('deadline').innerHTML = projet.deadline;
 	document.getElementById('cadre').innerHTML = projet.cadre;
+	document.getElementById('auteur').innerHTML = projet.nom + ' ' + projet.prenom;
 
 	// affichage boutons "modifier" et "supprimer" 
 	let modif = "<button id='modifier' onclick='recupProjetToUpdate(\"" + projet.idProjet + "\")'>Modifier</button>";
