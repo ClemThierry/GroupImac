@@ -39,9 +39,6 @@ Enjoy <3
     - Supprimer un commentaire 
     - Modifier un commentaire ? 
 
-- Assemblage
-    - Lier profil et projets (crée un nouveau profil lorsque l'on crée un nouveau projet avec un nouvel utilisateur)
-
 ## Ce qui reste à faire 
 - Partie "Projets" : 
     - Implémentation des points manquants des formulaires
@@ -55,9 +52,3 @@ Enjoy <3
 ## Ce qu'on laisse de côté pour l'instant
 - Partie Sessions
     - Faire en sorte qu'on puisse se connecter / déconnecter / se créer un compte
-
-## Lien du site hébergé
-http://perso-etudiant.u-pem.fr/~cvoegele/projets/projets.html
-
-## Lien de la BDD
-https://phpmyadmin.alwaysdata.com/ (Utilisateur : groupimac | MDP: MotDePasse)
