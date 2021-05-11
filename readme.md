@@ -42,6 +42,9 @@ Enjoy <3
 - Assemblage
     - Lier profil et projets (crée un nouveau profil lorsque l'on crée un nouveau projet avec un nouvel utilisateur)
 
+## Ce qui est en cours
+- CSS (voir dossier TestCSS)
+
 ## Ce qui reste à faire 
 - Partie "Projets" : 
     - Implémentation des points manquants des formulaires
