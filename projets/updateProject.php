@@ -15,8 +15,6 @@ if (isset($_POST['publier'])) {
 
     //appel fonction ajouter le projet à la bdd
     updateProjet($id, $titre, $presentation, $deadline, $cadre);
-
-    echo "<p>Votre projet a bien été modifié.</p> <a href='oneProject.php?id=".$id."'><button>Voir le projet</button></a>";
 }
 ?>
 
@@ -28,31 +26,18 @@ if (isset($_POST['publier'])) {
 </head>
 
 <body>
-    <header>
-        <div class="title">
-            <h1>GROUP'</h1>
-            <h1>IMAC</h1>
-        </div>
-        <h2>Trouve ton groupe en toute simplicité !</h2>
-        
-        <nav>
-            <div class="table">
-                <ul>
-                    <li class="menu-accueil"><a href="../index.html">Accueil</a></li>
-                    <li class="menu-voir-projet"><a href="allProjects.php">Voir les projets</a></li>
-                    <li class="menu-ajout-projet"><a href="addproject.php">Ajouter un projet</a></li>
-                    <li class="menu-profil"><a href="../connexion.php">Se connecter</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
+    <?php include_once "../header.php"; ?>
     <main>
         <h1>Modifier le projet</h1>
         <a href="oneProject.php?id=<?php echo $id; ?>"><button id="retour">Retour au projet</button></a>
 
         <form id="formProjet" method="POST" action="updateProject.php?id=<?php echo $id ?>">
-        <?php include_once "formProject.php"?>
+        <?php 
+            include_once "formProject.php";
+            if (isset($_POST['publier'])) {
+                echo "<p>Votre projet a bien été modifié.</p>";
+            } 
+        ?>
         </form>    
     </main>
 </body>

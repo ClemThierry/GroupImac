@@ -7,6 +7,12 @@
 
     deleteComment($idComment);
 
+    $titrePage = "Supprimer le commentaire";
+    include_once "../header.php"; 
 ?>
-<p>Votre commentaire a bien été supprimé.</p>
-<a href="../projets/oneProject.php?id=<?php echo $idProjet; ?>"><button>Retour au projet</button></a>
+<main>
+    <p>Votre commentaire a bien été supprimé.</p>
+    <a href="../projets/oneProject.php?id=<?php echo $idProjet; ?>"><button>Retour au projet</button></a>
+</main>
+
+</body>
