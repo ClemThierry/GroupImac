@@ -1,6 +1,6 @@
 <?php 
     $titrePage = "Modifier le projet";
-    //include_once "../header.php"; 
+    include_once "../header.php"; 
     include_once '../functions/projects.php';
 
     $id = $_GET["id"];

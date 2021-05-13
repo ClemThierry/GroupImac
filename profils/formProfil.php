@@ -30,8 +30,8 @@ if (isset($_GET['id'])) {
     <label for="add-nom">N° étudiant : </label>
     <input type="number" name="idUser" id='idUser' maxlength="10"
     <?php 
-        echo "value='".$id."'"; 
         if (isset($_GET['id'])){
+            echo "value='".$id."'"; 
             echo "disabled='disabled'";
         }
     ?>>
