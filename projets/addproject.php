@@ -21,6 +21,7 @@ if (isset($_POST['publier'])) {
         <meta charset="UTF-8">
         <title>Ajouter un projet</title>
         <link rel="stylesheet" href="../style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -32,14 +33,12 @@ if (isset($_POST['publier'])) {
             <h2>Trouve ton groupe en toute simplicité !</h2>
             
             <nav>
-                <div class="table">
-                    <ul>
-                        <li class="menu-accueil"><a href="../index.html">Accueil</a></li>
-                        <li class="menu-voir-projet"><a href="allProjects.php">Voir les projets</a></li>
-                        <li class="menu-ajout-projet"><a href="addproject.php">Ajouter un projet</a></li>
-                        <li class="menu-profil"><a href="../connexion.php">Se connecter</a></li>
-                    </ul>
-                </div>
+                <ul>
+                    <li class="menu-accueil"><a href="../index.html">Accueil</a></li>
+                    <li class="menu-voir-projet"><a href="allProjects.php">Voir les projets</a></li>
+                    <li class="menu-ajout-projet"><a href="addproject.php">Ajouter un projet</a></li>
+                    <li class="menu-profil"><a href="../connexion.php">Se connecter</a></li>
+                </ul>
             </nav>
         </header>
 

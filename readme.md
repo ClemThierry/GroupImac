@@ -37,7 +37,7 @@ Enjoy <3
     - Liaison projets & commentaires 
 
 ## Ce qui est en cours
-- CSS (voir dossier TestCSS)
+- CSS
 
 ## Ce qui reste à faire 
 - Partie "Projets"
