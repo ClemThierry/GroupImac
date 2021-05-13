@@ -7,6 +7,7 @@ $allProjects = getAllProjets();
     <head>
         <meta charset="UTF-8">
         <title>Tous les projets</title>
+        <link rel="stylesheet" href="../style.css">
         <style>
             #all {
                 display:flex;
@@ -27,17 +28,38 @@ $allProjects = getAllProjets();
     </head>
     
     <body>
-    <h1>Tous les projets</h1>
-    <a href="addProject.php"><button>Ajouter un projet</button></a>
-        <div id="all">
-            <?php 
-                foreach ($allProjects as $aProject) {
-                    $myDiv = "<a href='oneProject.php?id=".$aProject["idProjet"]."'><div class='oneProject' id=".$aProject["idProjet"]."><h3>".$aProject["titre"]."</h3>";
-                    $myDiv.= "<p>".$aProject["presentation"]."</p>";
-                    $myDiv.= "<p>Publié le : ".$aProject["datePubli"]."</p></div></a>";
-                    echo $myDiv;
-                }            
-            ?>
-        </div>
+        <header>
+            <div class="title">
+                <h1>GROUP'</h1>
+                <h1>IMAC</h1>
+            </div>
+            <h2>Trouve ton groupe en toute simplicité !</h2>
+            
+            <nav>
+                <div class="table">
+                    <ul>
+                        <li class="menu-accueil"><a href="../index.html">Accueil</a></li>
+                        <li class="menu-voir-projet"><a href="allProjects.php">Voir les projets</a></li>
+                        <li class="menu-ajout-projet"><a href="addproject.php">Ajouter un projet</a></li>
+                        <li class="menu-profil"><a href="../connexion.php">Se connecter</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <main>
+            <h1>Tous les projets</h1>
+            <a href="addProject.php"><button>Ajouter un projet</button></a>
+            <div id="all">
+                <?php 
+                    foreach ($allProjects as $aProject) {
+                        $myDiv = "<a href='oneProject.php?id=".$aProject["idProjet"]."'><div class='oneProject' id=".$aProject["idProjet"]."><h3>".$aProject["titre"]."</h3>";
+                        $myDiv.= "<p>".$aProject["presentation"]."</p>";
+                        $myDiv.= "<p>Publié le : ".$aProject["datePubli"]."</p></div></a>";
+                        echo $myDiv;
+                    }            
+                ?>
+            </div>
+        </main>
     </body>
 </html>
