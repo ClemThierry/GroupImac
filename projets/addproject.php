@@ -9,10 +9,10 @@ include_once "../header.php";
     <h1>Ajouter un projet</h1>
     <a href="allProjects.php"><button id="retour">Retour aux projets</button></a>
     <form id="formProjet" method="POST" action="addproject.php">
-    <?php include_once "formProject.php"?>
-    </form>
+    <?php 
+        include_once "formProject.php";
+        echo "</form>";
 
-    <?php
         if (isset($_POST['publier'])) {
 
             $titre = $_POST['titre'];

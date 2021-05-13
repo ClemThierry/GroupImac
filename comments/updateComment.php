@@ -1,7 +1,7 @@
 <?php 
     include_once '../functions/comments.php';
 
-    $id = $_GET["id"];
+    $id = $_GET["idComment"];
     $comment = getCommentById($id);
     $idProjet = $comment['RefProjet'];
 
@@ -14,7 +14,7 @@
     <h3>Modifier le commentaire</h3>
     <form action="updateComment.php?id=<?php echo $id; ?>" method="POST">
     <?php 
-        include_once "../comments/formComment.php";
+        include_once "formComment.php";
         echo "</form>";
 
         if (isset($_POST['sendComment'])) {

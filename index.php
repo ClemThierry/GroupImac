@@ -25,6 +25,7 @@
                 <li class="menu-voir-projet"><a href="./projets/allProjects.php">Voir les projets</a></li>
                 <li class="menu-ajout-projet"><a href="./projets/addproject.php">Ajouter un projet</a></li>
                 <li class="menu-profil"><a href="./profils/connexion.php">Se connecter</a></li>
+                <li class="menu-membres"><a href="./profils/allProfils.php">Tous les membres</a></li>
             </ul>
         </div>
     </nav>

@@ -44,6 +44,9 @@ Enjoy <3
     - Implémentation des points manquants des formulaires
     - Gestion des catégories = types projets 
 
+- Partie "Commentaires" 
+    - Supprimer tous les commentaires d'un projet quand on supprime ledit projet
+
 - Assemblage 
     - Lier projets et profil 
     - Lier profil et commentaires 

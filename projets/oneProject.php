@@ -1,11 +1,12 @@
 <?php 
 include_once '../functions/projects.php';
 include_once '../functions/comments.php';
-include_once "../header.php";
 
 $id = $_GET["id"];
 $project = getProjetByID($id);
 $titrePage = $project['titre'];
+
+include_once "../header.php";
 
 if (isset($_POST['sendComment'])) {
 
@@ -46,7 +47,7 @@ $comments = getCommentsOfProject($id);
             $htmlComment .= "<p>Auteur (ID pour l'instant) : ".$aComment['RefUser']."</p>";
             $htmlComment .= "<p>Date : ".$aComment['dateComment']."</p>";
             $htmlComment .= "<p>Message : ".$aComment['message']."</p>";
-            $htmlComment .= "</div><a href='../comments/updateComment.php?id=".$aComment['idComment']."'><button>Modifier</button></a><a href='../comments/deleteComment.php?id=".$aComment['idComment']."'><button>Supprimer</button></a>";
+            $htmlComment .= "</div><a href='../comments/updateComment.php?idComment=".$aComment['idComment']."'><button>Modifier</button></a><a href='../comments/deleteComment.php?idComment=".$aComment['idComment']."'><button>Supprimer</button></a>";
 
             echo $htmlComment;
         }
