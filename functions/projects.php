@@ -21,8 +21,8 @@ include_once "connexion.php";
 	/* Ajouter un projet */ 
 	function addProjet($titre, $presentation, $deadline, $cadre) {
 		$cnx = connection();
-		$rqt = $cnx->prepare('insert into Projet(titre, presentation, deadline, datePubli, cadre) values(?,?,?,?,?)');
-		$rqt->execute(array($titre, $presentation, $deadline, recupDate(getdate()), $cadre));
+		$rqt = $cnx->prepare('insert into Projet(titre, presentation, deadline, datePubli, cadre,nbreMax) values(?,?,?,?,?,?)');
+		$rqt->execute(array($titre, $presentation, $deadline, recupDate(getdate()), $cadre,1));
 
 		// A FAIRE : AJOUTER TOUS LES INPUT QUI MANQUENT (titre et presentation suffisent pour tester) 
 
