@@ -1,5 +1,6 @@
 <?php 
 include_once '../functions/projects.php';
+include_once '../functions/profils.php';
 
 $titrePage = "Ajouter un projet";
 include_once "../header.php"; 
@@ -19,13 +20,25 @@ include_once "../header.php";
             $presentation = $_POST['presentation'];
             $deadline = $_POST['deadline'];
             $cadre = $_POST['cadre'];
-            $recherche = $_POST['jeRecherche'];
-            $membres = $_POST['membres'];
+            $idUser = $_POST['idUser'];
 
-            //appel fonction ajouter le projet à la bdd
-            addProjet($titre, $presentation, $deadline, $cadre);
+            $idUserExists = false; 
+            $users = getAllMembers();
 
-            echo "<p>Votre projet a bien été ajouté.</p>";
+            foreach($users as $unUser) {
+                if ($unUser['idUser'] == $idUser) {
+                    $idUserExists = true;
+                    break;
+                }
+            }
+            if ($idUserExists) {
+                //appel fonction ajouter le projet à la bdd
+                addProjet($titre, $presentation, $deadline, $cadre, $idUser);
+                echo "<p>Votre projet a bien été ajouté.</p>";
+            }
+            else {
+                echo "<p>Veuillez entrer un ID utilisateur existant.</p>";
+            }
         }
     ?>            
 </main>  

@@ -22,18 +22,46 @@ function getMemberOfProjet($idProjet){
     return $rqt->fetch();
 }
 
+function getProjectByMember($idMember){
+    $cnx = connection();
+    $rqt = $cnx->prepare('SELECT * FROM projet WHERE projet.refAuteurProjet = ?');
+    $rqt->execute(array($idMember));
+    return $rqt->fetchAll();
+}
+
+function getCommentByMember($idMember){
+    $cnx = connection();
+    $rqt = $cnx->prepare('SELECT * FROM commentaire WHERE refUser = ?');
+    $rqt->execute(array($idMember));
+    return $rqt->fetchAll();
+}
+
 function addMember($numEtud, $nom, $prenom, $promo, $discord, $presentation) {
     $cnx = connection();
     $rqt = $cnx->prepare('INSERT into utilisateur(idUser, nom,prenom,promo,discord,presentation) values(?,?,?,?,?,?)');
     $rqt->execute(array($numEtud, $nom, $prenom, $promo, $discord, $presentation));
-    return getAll();
+    return getAllMembers();
 }
 
 function deleteMember($id){
     $cnx = connection();
     $rqt = $cnx->prepare('DELETE FROM utilisateur WHERE idUser=?');
     $rqt->execute(array($id));
-    return getAll();
+    return getAllMembers();
+}
+
+function deleteProjectByMember($idMember){
+    $cnx = connection();
+    $rqt = $cnx->prepare('DELETE FROM projet WHERE RefAuteurProjet=?');
+    $rqt->execute(array($idMember));
+    return getAllMembers();
+}
+
+function deleteCommentByMember($idMember){
+    $cnx = connection();
+    $rqt = $cnx->prepare('DELETE FROM commentaire WHERE RefUser=?');
+    $rqt->execute(array($idMember));
+    return getAllMembers();
 }
 
 function updateMember($id, $nom, $prenom, $promo, $discord, $presentation){

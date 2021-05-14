@@ -12,7 +12,7 @@
 <main>
     <a href="../projets/oneProject.php?id=<?php echo $idProjet; ?>"><button>Retour au projet</button></a>
     <h3>Modifier le commentaire</h3>
-    <form action="updateComment.php?id=<?php echo $id; ?>" method="POST">
+    <form action="updateComment.php?idComment=<?php echo $id; ?>" method="POST">
     <?php 
         include_once "formComment.php";
         echo "</form>";

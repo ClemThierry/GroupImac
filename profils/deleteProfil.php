@@ -1,9 +1,16 @@
 <?php 
     include_once "../functions/profils.php";
+    include_once "../functions/projects.php";
 
     $id = $_GET['id'];
     $profil = getMemberById($id);
 
+    $projets = getProjectByMember($id); 
+    foreach($projets as $projet) {
+        deleteCommentFromProjet($projet['idProjet']);
+    }
+    deleteCommentByMember($id);
+    deleteProjectByMember($id); 
     deleteMember($id);
 
     $titrePage = "Supprimer le profil";

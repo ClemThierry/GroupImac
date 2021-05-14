@@ -1,6 +1,7 @@
 <?php 
 include_once '../functions/projects.php';
 include_once '../functions/comments.php';
+include_once '../functions/profils.php';
 
 $id = $_GET["id"];
 $project = getProjetByID($id);
@@ -14,8 +15,26 @@ if (isset($_POST['sendComment'])) {
     $message = $_POST['message'];
 
     //ajouter commentaire || ATTENTION : test : USER=1 (car pas de user implémenté encore)
-    addComment($message, 1, $id);
+    
+    $idUserExists = false; 
+    $users = getAllMembers();
+
+    foreach($users as $unUser) {
+        if ($unUser['idUser'] == $refUser) {
+            $idUserExists = true;
+            break;
+        }
+    }
+    if ($idUserExists) {
+        //appel fonction ajouter le projet à la bdd
+        addComment($message, $refUser, $id);
+        echo "<p>Votre commentaire a bien été ajouté.</p>";
+    }
+    else {
+        echo "<p>Veuillez entrer un ID utilisateur existant.</p>";
+    }
 }
+
 $comments = getCommentsOfProject($id);
 ?>
 
@@ -31,7 +50,6 @@ $comments = getCommentsOfProject($id);
         echo $myDiv;
     
         echo "<a href='updateProject.php?id=".$id."'><button>Modifier</button></a> "; 
-
         echo "<a href='deleteProject.php?id=".$id."'><button id='supprimer'>Supprimer</button></a>"; 
     ?>
 
@@ -43,8 +61,10 @@ $comments = getCommentsOfProject($id);
 
     <?php 
         foreach ($comments as $aComment) {
+            $author = getMemberByComment($aComment['idComment']);
+
             $htmlComment = "<div class='comment'>";
-            $htmlComment .= "<p>Auteur (ID pour l'instant) : ".$aComment['RefUser']."</p>";
+            $htmlComment .= "<p>".$author['prenom']." ".$author['nom']."</p>";
             $htmlComment .= "<p>Date : ".$aComment['dateComment']."</p>";
             $htmlComment .= "<p>Message : ".$aComment['message']."</p>";
             $htmlComment .= "</div><a href='../comments/updateComment.php?idComment=".$aComment['idComment']."'><button>Modifier</button></a><a href='../comments/deleteComment.php?idComment=".$aComment['idComment']."'><button>Supprimer</button></a>";

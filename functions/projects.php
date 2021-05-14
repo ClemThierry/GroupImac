@@ -19,28 +19,36 @@ include_once "connexion.php";
 	}
 
 	/* Ajouter un projet */ 
-	function addProjet($titre, $presentation, $deadline, $cadre) {
+	function addProjet($titre, $presentation, $deadline, $cadre, $idUser) {
 		$cnx = connection();
-		$rqt = $cnx->prepare('insert into Projet(titre, presentation, deadline, datePubli, cadre,nbreMax) values(?,?,?,?,?,?)');
-		$rqt->execute(array($titre, $presentation, $deadline, recupDate(getdate()), $cadre,1));
+		$rqt = $cnx->prepare('insert into Projet(titre, presentation, deadline, datePubli, cadre,nbreMax, RefAuteurProjet) values(?,?,?,?,?,?,?)');
+		$rqt->execute(array($titre, $presentation, $deadline, recupDate(getdate()), $cadre,1, $idUser));
 
 		// A FAIRE : AJOUTER TOUS LES INPUT QUI MANQUENT (titre et presentation suffisent pour tester) 
 
 		return getAllProjets();
 	}
 
-	/* Supprimer un projet */ 
+	/* Supprimer un projet */
 	function deleteProjet($id) {
 		$cnx = connection();
 		$rqt = $cnx->prepare('delete from Projet where idProjet=?');
 		$rqt->execute(array($id));
 		return getAllProjets();
-	}	
+	}
+    
+	/* Supprimer les commentaires liés au projet */ 
+    function deleteCommentFromProjet($project_id) {
+        $co = connection();
+        $req = $co->prepare('delete from Commentaire where refProjet = ?');
+        return $req->execute(array($project_id));
+    }
+
 
 	/* Modifier un projet */ 
 	function updateProjet($id, $titre, $presentation, $deadline, $cadre) {
 		$cnx = connection();
-		$rqt = $cnx->prepare("UPDATE Projet SET titre=?, presentation=?, deadline=?, datePubli=?, cadre=? WHERE idProjet=?");
+		$rqt = $cnx->prepare("UPDATE Projet SET titre=?, presentation=?, deadline=?, datePubli=?, cadre=?, RefAuteurProjet=? WHERE idProjet=?");
 		$rqt->execute(array($titre, $presentation, $deadline, recupDate(getdate()), $cadre, $id));
 		return getAllProjets();
 	}

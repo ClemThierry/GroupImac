@@ -32,6 +32,7 @@ Enjoy <3
     - Voir tous les commentaires d'un projet 
     - Supprimer un commentaire 
     - Modifier un commentaire
+    - Supprimer tous les commentaires d'un projet quand on supprime ledit projet
 
 - Assemblage
     - Liaison projets & commentaires 
@@ -43,9 +44,6 @@ Enjoy <3
 - Partie "Projets"
     - Implémentation des points manquants des formulaires
     - Gestion des catégories = types projets 
-
-- Partie "Commentaires" 
-    - Supprimer tous les commentaires d'un projet quand on supprime ledit projet
 
 - Assemblage 
     - Lier projets et profil 

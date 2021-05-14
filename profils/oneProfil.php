@@ -3,6 +3,9 @@
 
     $id = $_GET['id']; 
     $profil = getMemberById($id);
+    $sesProjets = getProjectByMember($id);
+    $sesComments = getCommentByMember($id);
+
     $titrePage = $profil['prenom']." ".$profil['nom'];
  
     include_once "../header.php";
@@ -12,9 +15,8 @@
     $promo=$profil['promo'];
     $discord=$profil['discord'];
     $presentation=$profil['presentation'];
-
-    // ici : infos profil + annonces + commentaires laissés (+ projets auquel il participe)
 ?>
+
 <main>
     <div id="profil">
     <?php 
@@ -25,12 +27,30 @@
         echo $myDiv;
     ?>
     </div>
-    <div id="profil-projects">
-        à venir : projets du profil
+    <h2>Projets publiés</h2>
+    <div id="all">
+        <?php
+        if (empty($sesProjets)) {
+            echo "<p>Pas de projet pour l'instant.</p>";
+        }
+
+        foreach ($sesProjets as $unProjet) {
+            echo "<div class='oneProject'><h3>".$unProjet['titre']."</h3></div>";
+        } 
+        ?>
     </div>
+
+    <h2>Commentaires publiés</h2>
     <div id="profil-comments">
-        à venir : commentaires du profil 
-    </div>
+    <?php
+        if (empty($sesComments)) {
+            echo "<p>Pas de commentaires pour l'instant.</p>";
+        }
+
+        foreach ($sesComments as $unComment) {
+            echo "<div class='oneProject'><h3>".$unComment['message']."</h3></div>";
+        } 
+        ?>    </div>
     <a href="updateProfil.php?id=<?php echo $id; ?>"><button>Modifier le profil</button></a>
     <a href="deleteProfil.php?id=<?php echo $id; ?>"><button>Supprimer le profil</button></a>
     <a href="allProfils.php"><button>Tous les profils</button></a>

@@ -16,9 +16,15 @@
 		$rqt = $cnx->prepare('SELECT * FROM commentaire WHERE idComment = ?');
 		$rqt->execute(array($id));
 		return $rqt->fetch();
-	}
+	}  
 
-    
+    function getMemberByComment($idComment) {
+		$cnx = connection();
+		$rqt = $cnx->prepare('SELECT * FROM utilisateur, commentaire WHERE utilisateur.idUser = commentaire.RefUser AND commentaire.idComment = ?');
+		$rqt->execute(array($idComment));
+		return $rqt->fetch();
+    }
+
     // ajoute un commentaire, retourne false si la requete echoue
     function addComment($message, $author_id, $project_id) {
         $co = connection();
@@ -32,7 +38,7 @@
         $req = $co->prepare('delete from Commentaire where idcomment = ?');
         return $req->execute(array($comment_id));
     }
-    
+
     // modifie un commentaire, retourne false si la requete echoue
     function updateComment($comment_id, $new_message) {
         error_log($comment_id);
