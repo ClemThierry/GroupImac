@@ -1,5 +1,5 @@
 <?php 
-    include_once "connexion.php";
+    include_once "connexionbdd.php";
 
     // retourne la liste des commentaires d'un projet
     // sous forme de tableau associatif
