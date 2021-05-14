@@ -1,8 +1,8 @@
 <?php 
     $titrePage = "Tous les projets";
+    include_once "../header.php"; 
 
     include_once '../functions/projects.php';
-    include_once "../header.php"; 
 
     $allProjects = getAllProjets();
 

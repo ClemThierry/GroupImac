@@ -1,4 +1,6 @@
 <?php 
+    $titrePage = "Supprimer le commentaire";
+    include_once "../header.php"; 
     include_once "../functions/comments.php";
 
     $idComment = $_GET['idComment'];
@@ -7,8 +9,6 @@
 
     deleteComment($idComment);
 
-    $titrePage = "Supprimer le commentaire";
-    include_once "../header.php"; 
 ?>
 <main>
     <h1>Suppression du commentaire</h1>    

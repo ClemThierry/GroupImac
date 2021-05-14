@@ -2,8 +2,9 @@
     $titrePage = "Modifier le profil";
     include_once "../header.php";
     include_once "../functions/profils.php";
+    include_once "../functions/categories.php";
 
-    $id = $_GET["id"];
+    $id = $_SESSION['personneConnectee']['idUser'];
     $profil = getMemberById($id);
 
     if (isset($_POST['ajouter'])) {
@@ -12,14 +13,19 @@
         $promo=$_POST['promo'];
         $discord=$_POST['discord'];
         $presentation=$_POST['presentation'];
+        $categories = $_POST['categorie'];
 
         updateMember($id, $nom, $prenom, $promo, $discord, $presentation);
+        deleteCategorieFromMember($id);
+        foreach($categories as $aCateg) {
+            addCategorieToMember($id, $aCateg);
+        }
     }
 ?>
 
 <main>
     <h1>Modifier le profil</h1>
-    <form action="updateProfil.php?id=<?php echo $id; ?>" method="POST">
+    <form action="updateProfil.php" method="POST">
     <?php 
         include_once "formProfil.php";
         echo "</form>"; 
@@ -27,7 +33,7 @@
         if (isset($_POST['ajouter'])) { echo "<p>Votre profil a bien été modifié.</p>"; }
         
     ?>
-    <a href="oneProfil.php?id=<?php echo $id; ?>"><button>Retour au profil</button></a>
+    <a href="oneProfil.php"><button>Retour au profil</button></a>
 </main>
 </body>
 </html>

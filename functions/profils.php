@@ -1,6 +1,6 @@
 <?php 
 
-include_once "connexion.php";
+include_once "connexionbdd.php";
 
 function getAllMembers() {
     $cnx = connection();
@@ -8,11 +8,19 @@ function getAllMembers() {
     return $result->fetchall();
 }
 
+
 function getMemberById($id) {
     $cnx = connection();
     $rqt = $cnx->prepare('SELECT * FROM utilisateur WHERE idUser=?');
     $rqt->execute(array($id));
     return $rqt->fetch();
+}
+
+function getMemberByIdAndMdp($id, $mdp) {
+    $cnx = connection();
+    $rqt = $cnx->prepare('SELECT * FROM utilisateur WHERE idUser=? AND nom=?');
+    $rqt->execute(array($id,$mdp));
+    return $rqt;
 }
 
 function getMemberOfProjet($idProjet){

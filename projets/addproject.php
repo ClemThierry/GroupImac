@@ -1,9 +1,10 @@
 <?php 
-include_once '../functions/projects.php';
-include_once '../functions/profils.php';
-
 $titrePage = "Ajouter un projet";
 include_once "../header.php"; 
+include_once '../functions/projects.php';
+include_once '../functions/profils.php';
+include_once '../functions/categories.php';
+
 ?>
 
 <main>
@@ -13,7 +14,6 @@ include_once "../header.php";
     <?php 
         include_once "formProject.php";
         echo "</form>";
-
         if (isset($_POST['publier'])) {
 
             $titre = $_POST['titre'];
@@ -21,6 +21,7 @@ include_once "../header.php";
             $deadline = $_POST['deadline'];
             $cadre = $_POST['cadre'];
             $idUser = $_POST['idUser'];
+            $categories = $_POST['categorie'];
 
             $idUserExists = false; 
             $users = getAllMembers();
@@ -34,7 +35,14 @@ include_once "../header.php";
             if ($idUserExists) {
                 //appel fonction ajouter le projet à la bdd
                 addProjet($titre, $presentation, $deadline, $cadre, $idUser);
-                echo "<p>Votre projet a bien été ajouté.</p>";
+                $idProjectposted = getLastProject($idUser);
+
+                foreach($categories as $aCateg) {
+                    addCategorieToProject($idProjectposted, $aCateg);
+                }
+
+                echo "<p>Votre projet a bien été ajouté.</p><a href='oneproject.php?id=".$idProjectposted."'><button>Voir le projet</button></a>";
+
             }
             else {
                 echo "<p>Veuillez entrer un ID utilisateur existant.</p>";

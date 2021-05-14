@@ -1,12 +1,12 @@
 <?php 
+    $titrePage = "Modifier le commentaire";
+    include_once "../header.php";
     include_once '../functions/comments.php';
 
     $id = $_GET["idComment"];
     $comment = getCommentById($id);
     $idProjet = $comment['RefProjet'];
 
-    $titrePage = "Modifier le commentaire";
-    include_once "../header.php";
 ?>
 
 <main>

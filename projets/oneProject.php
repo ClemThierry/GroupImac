@@ -1,48 +1,27 @@
 <?php 
+$titrePage = "Voir le projet";
+include_once "../header.php";
 include_once '../functions/projects.php';
 include_once '../functions/comments.php';
 include_once '../functions/profils.php';
+include_once '../functions/categories.php';
 
 $id = $_GET["id"];
 $project = getProjetByID($id);
 $titrePage = $project['titre'];
+$categories = getCategoriesByProject($id);
 
-include_once "../header.php";
 
-if (isset($_POST['sendComment'])) {
-
-    $refUser = $_POST['refUser'];
-    $message = $_POST['message'];
-
-    //ajouter commentaire || ATTENTION : test : USER=1 (car pas de user implémenté encore)
-    
-    $idUserExists = false; 
-    $users = getAllMembers();
-
-    foreach($users as $unUser) {
-        if ($unUser['idUser'] == $refUser) {
-            $idUserExists = true;
-            break;
-        }
-    }
-    if ($idUserExists) {
-        //appel fonction ajouter le projet à la bdd
-        addComment($message, $refUser, $id);
-        echo "<p>Votre commentaire a bien été ajouté.</p>";
-    }
-    else {
-        echo "<p>Veuillez entrer un ID utilisateur existant.</p>";
-    }
-}
-
-$comments = getCommentsOfProject($id);
 ?>
 
 <main>
     <a href="allProjects.php"><button id="retour">Retour aux projets</button></a>
-    <?php 
-        $myDiv = "<h1>".$project['titre']."</h1>";
-        $myDiv .= "<p>Publié le : ".$project['datePubli']."</p>";
+    <?php
+        $myDiv = "<h1>".$project['titre']."</h1><div class='categories' style='display:flex;'>";
+        foreach ($categories as $aCat) {
+            $myDiv .= "<div style='border:1px solid black; padding:10px;margin:0 10px;'>".$aCat['nomCat']."</div>";
+        }        
+        $myDiv .= "</div><p>Publié le : ".$project['datePubli']."</p>";
         $myDiv .= "<p>Présentation : ".$project['presentation']."</p>";
         $myDiv .= "<p>Pour le : ".$project['deadline']."</p>";
         $myDiv .= "<p>Cadre : ".$project['cadre']."</p>";
@@ -60,6 +39,31 @@ $comments = getCommentsOfProject($id);
     </form>
 
     <?php 
+    
+if (isset($_POST['sendComment'])) {
+
+    $refUser = $_POST['refUser'];
+    $message = $_POST['message'];
+
+    $idUserExists = false; 
+    $users = getAllMembers();
+
+    foreach($users as $unUser) {
+        if ($unUser['idUser'] == $refUser) {
+            $idUserExists = true;
+            break;
+        }
+    }
+    if ($idUserExists) {
+        addComment($message, $refUser, $id);
+    }
+    else {
+        echo "<p>Veuillez entrer un ID utilisateur existant.</p>";
+    }
+}
+
+$comments = getCommentsOfProject($id);
+
         foreach ($comments as $aComment) {
             $author = getMemberByComment($aComment['idComment']);
 

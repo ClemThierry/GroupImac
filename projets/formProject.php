@@ -5,6 +5,7 @@ $presentation='';
 $deadline='';
 $cadre='';
 $idUser='';
+$categSelected='';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -15,6 +16,7 @@ if (isset($_GET['id'])) {
     $deadline=$projet['deadline'];
     $cadre=$projet['cadre'];
     $idUser=$projet['RefAuteurProjet'];
+    $categSelected=getCategoriesByProject($id);
 }
 
 ?>
@@ -43,21 +45,30 @@ if (isset($_GET['id'])) {
     <input type="number" name="idUser" id='idUser' maxlength="10"
     <?php 
         if (isset($_GET['id'])){
-            echo "value='".$id."'"; 
+            echo "value='".$idUser."'"; 
             echo "disabled='disabled'";
         }
     ?> required>
 
-    <!-- Catégorie(s) : -->
+    <fieldset><legend>Catégorie(s) : </legend>
     <?php 
-        // A IMPLEMENTER après avoir créé les tables / fonctions catégories
-        // $categories = getAllCat();
-        // foreach ($categories as $aCat) {
-        //     $html = "<input type='checkbox' name='categorie' value='".$aCat['idCat']."' id='".$aCat['idCat']."'>";
-        //     $html .= "<label for='".$aCat['idCat']."'>".$aCat['nomCat']."</label>";
-        //     echo $html;
-        // }
-    ?>
+        $categories = getAllCategories();
+        foreach ($categories as $aCat) {
+            $html = "<input type='checkbox' name='categorie[]' value='".$aCat['idCat']."' id='".$aCat['idCat']."'";
 
+            if (!empty($categSelected)) {
+                foreach($categSelected as $CatSel) {
+                    if ($CatSel['idCat'] == $aCat['idCat']) {
+                        $html .= " checked";
+                    }
+                }
+            }
+
+            $html .=">";
+            $html .= "<label for='".$aCat['idCat']."'>".$aCat['nomCat']."</label>";
+            echo $html;
+        }
+    ?>
+    </fieldset>
     <input type="submit" name='publier' id="publier">
 </fieldset>

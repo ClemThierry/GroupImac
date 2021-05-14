@@ -6,16 +6,18 @@ $prenom='';
 $promo='';
 $discord='';
 $presentation='';
+$categSelected='';
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $profil = getMemberById($id);
+if (isset($_SESSION['personneConnectee'])) {
+    $profil = $_SESSION['personneConnectee'];
+    $id = $profil['idUser'];
 
     $nom=$profil['nom'];
     $prenom=$profil['prenom'];
     $promo=$profil['promo'];
     $discord=$profil['discord'];
     $presentation=$profil['presentation'];
+    $categSelected=getCategoriesByMember($id);
 }
 
 ?>
@@ -30,7 +32,7 @@ if (isset($_GET['id'])) {
     <label for="add-nom">N° étudiant : </label>
     <input type="number" name="idUser" id='idUser' maxlength="10"
     <?php 
-        if (isset($_GET['id'])){
+        if (isset($_SESSION['personneConnectee'])){
             echo "value='".$id."'"; 
             echo "disabled='disabled'";
         }
@@ -57,6 +59,28 @@ if (isset($_GET['id'])) {
 
     <label for="add-presentation">Présentation : </label>
     <textarea name="presentation" id='add-presentation'><?php echo $presentation; ?></textarea required>
+
+    <fieldset><legend>Mes domaines préférés : </legend>
+    <?php 
+        $categories = getAllCategories();
+        foreach ($categories as $aCat) {
+            $html = "<input type='checkbox' name='categorie[]' value='".$aCat['idCat']."' id='".$aCat['idCat']."'";
+
+            if (!empty($categSelected)) {
+                foreach($categSelected as $CatSel) {
+                    if ($CatSel['idCat'] == $aCat['idCat']) {
+                        $html .= " checked";
+                    }
+                }
+            }
+
+            $html .=">";
+            $html .= "<label for='".$aCat['idCat']."'>".$aCat['nomCat']."</label>";
+            echo $html;
+        }
+    ?>
+    </fieldset>
+
 
     <input type="submit" name="ajouter" id="ajouter">
 </fieldset>
