@@ -58,6 +58,21 @@ nav li:hover a{
 }
 */
 
+#profil-perso {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background: rgb(173, 216, 230);
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    min-width: 300px;
+}
+
+#profil-perso>* {
+    margin: auto;
+}
+
 body {
     margin: 0px;
     padding: 0px;
