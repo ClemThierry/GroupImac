@@ -1,25 +1,24 @@
-<?php 
-    include_once "../functions/profils.php";
-    include_once "../functions/projects.php";
+<?php
+include_once "../functions/profils.php";
+include_once "../functions/projects.php";
+include_once "../header.php";
+$id = $_SESSION['personneConnectee']['idUser'];
 
-    $id = $_GET['id'];
-    $profil = getMemberById($id);
+$projets = getProjectByMember($id);
+foreach ($projets as $projet) {
+    deleteCommentFromProjet($projet['idProjet']);
+}
+deleteCommentByMember($id);
+deleteProjectByMember($id);
+deleteMember($id);
 
-    $projets = getProjectByMember($id); 
-    foreach($projets as $projet) {
-        deleteCommentFromProjet($projet['idProjet']);
-    }
-    deleteCommentByMember($id);
-    deleteProjectByMember($id); 
-    deleteMember($id);
-
-    $titrePage = "Supprimer le profil";
-    include_once "../header.php";
+$titrePage = "Supprimer le profil";
 ?>
 <main>
     <h1>Suppression du profil</h1>
     <p>Votre profil a bien été supprimé.</p>
-    <a href="../index.php"><button>Retour à l'accueil</button></a> 
+    <a href="../deconnexion.php"><button>Retour à l'accueil</button></a>
 </main>
 </body>
+
 </html>

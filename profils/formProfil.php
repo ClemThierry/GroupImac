@@ -7,10 +7,10 @@ $promo='';
 $discord='';
 $presentation='';
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $profil = getMemberById($id);
+if (isset($_SESSION['personneConnectee'])) {
+    $profil = $_SESSION['personneConnectee'];
 
+    $id = $profil['idUser'];
     $nom=$profil['nom'];
     $prenom=$profil['prenom'];
     $promo=$profil['promo'];
@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
     <label for="add-nom">N° étudiant : </label>
     <input type="number" name="idUser" id='idUser' maxlength="10"
     <?php 
-        if (isset($_GET['id'])){
+        if (isset($_SESSION['personneConnectee'])){
             echo "value='".$id."'"; 
             echo "disabled='disabled'";
         }
