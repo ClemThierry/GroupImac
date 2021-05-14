@@ -144,6 +144,7 @@ CREATE TABLE `utilisateur` (
   `idUser` int(11) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
+  `mdp` varchar(32) NOT NULL,
   `promo` varchar(6) DEFAULT NULL,
   `discord` varchar(100) DEFAULT NULL,
   `presentation` text DEFAULT NULL
