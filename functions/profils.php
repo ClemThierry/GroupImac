@@ -18,7 +18,7 @@ function getMemberById($id) {
 
 function getMemberByIdAndMdp($id, $mdp) {
     $cnx = connection();
-    $rqt = $cnx->prepare('SELECT * FROM utilisateur WHERE idUser=? AND nom=?');
+    $rqt = $cnx->prepare('SELECT * FROM utilisateur WHERE idUser=? AND mdp=?');
     $rqt->execute(array($id,$mdp));
     return $rqt;
 }
@@ -44,10 +44,10 @@ function getCommentByMember($idMember){
     return $rqt->fetchAll();
 }
 
-function addMember($numEtud, $nom, $prenom, $promo, $discord, $presentation) {
+function addMember($numEtud, $nom, $prenom, $mdp, $promo, $discord, $presentation) {
     $cnx = connection();
-    $rqt = $cnx->prepare('INSERT into utilisateur(idUser, nom,prenom,promo,discord,presentation) values(?,?,?,?,?,?)');
-    $rqt->execute(array($numEtud, $nom, $prenom, $promo, $discord, $presentation));
+    $rqt = $cnx->prepare('INSERT into utilisateur(idUser, nom,prenom, mdp, promo,discord,presentation) values(?,?,?,?,?,?,?)');
+    $rqt->execute(array($numEtud, $nom, $prenom,$mdp, $promo, $discord, $presentation));
     return getAllMembers();
 }
 
@@ -72,10 +72,10 @@ function deleteCommentByMember($idMember){
     return getAllMembers();
 }
 
-function updateMember($id, $nom, $prenom, $promo, $discord, $presentation){
+function updateMember($id, $nom, $prenom,$mdp, $promo, $discord, $presentation){
     $cnx = connection();
-    $rqt = $cnx->prepare("UPDATE utilisateur SET nom=?, prenom=?, promo=?, discord=?, presentation=? WHERE idUser=?");
-    $rqt->execute(array($nom, $prenom, $promo, $discord, $presentation, $id));
+    $rqt = $cnx->prepare("UPDATE utilisateur SET nom=?, prenom=?, mdp=?, promo=?, discord=?, presentation=? WHERE idUser=?");
+    $rqt->execute(array($nom, $prenom,$mdp, $promo, $discord, $presentation, $id));
     return getMemberByID($id);
 }
 ?>
