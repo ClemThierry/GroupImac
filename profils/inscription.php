@@ -16,6 +16,7 @@
             $idUser = $_POST['idUser'];
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
+            $mdp = md5($_POST['mdp']);
             $promo = $_POST['promo'];
             $discord = $_POST['discord'];
             $presentation = $_POST['presentation'];
@@ -35,7 +36,7 @@
             }
             else {
                 //appel fonction ajouter le projet à la bdd
-                addMember($idUser, $nom, $prenom, $promo, $discord, $presentation);
+                addMember($idUser, $nom, $prenom,$mdp, $promo, $discord, $presentation);
 
                 foreach($categories as $aCateg) {
                     addCategorieToMember($idUser, $aCateg);

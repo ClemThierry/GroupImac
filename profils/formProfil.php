@@ -3,6 +3,7 @@
 $idUser='';
 $nom='';
 $prenom='';
+$mdp='';
 $promo='';
 $discord='';
 $presentation='';
@@ -14,6 +15,7 @@ if (isset($_SESSION['personneConnectee'])) {
 
     $nom=$profil['nom'];
     $prenom=$profil['prenom'];
+    $mdp=$profil['mdp'];
     $promo=$profil['promo'];
     $discord=$profil['discord'];
     $presentation=$profil['presentation'];
@@ -28,6 +30,9 @@ if (isset($_SESSION['personneConnectee'])) {
 
     <label for="add-nom">Nom : </label>
     <input type="text" name="nom" id='add-nom' maxlength="30" value="<?php echo $nom; ?>" required>
+
+    <label for="add-mdp">Mot de passe : </label>
+    <input type="password" name="mdp" id='add-mdp' maxlength="30" value="<?php echo $mdp; ?>" required>
 
     <label for="add-nom">N° étudiant : </label>
     <input type="number" name="idUser" id='idUser' maxlength="10"
