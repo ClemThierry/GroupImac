@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS groupimac;
 
-CREATE DATABASE groupimac;
+CREATE DATABASE groupimac SET utf8;
 
 CREATE TABLE `utilisateur` (
   `idUser` INT PRIMARY KEY NOT NULL,

@@ -9,7 +9,7 @@
         <label for="id">Identifiant :</label>
         <input type="text" name="id"><br>
         <label for="mdp">Mot de passe :</label>
-        <input type="mdp" name="mdp"><br>
+        <input type="password" name="mdp"><br>
         <button type="submit" name="envoyer">Connexion</button>
     </form>
 
