@@ -1,14 +1,19 @@
 <?php 
+    $id = $_GET['id'];
+    $titrePage = "Supprimer le projet";
+    include_once "../header.php"; 
 
-include_once '../functions/projects.php';
+    include_once '../functions/projects.php';
+    include_once '../functions/categories.php';
 
-$id = $_GET['id'];
+    deleteCommentFromProjet($id);
+    deleteCategorieFromProject($id);
+    deleteProjet($id);
 
-deleteProjet($id);
-
-echo "Votre projet a bien été supprimé. <a href='allProjects.php'><button>Retour aux projets</button></a>";
+    echo "<main><p>Votre projet a bien été supprimé.</p><a href='allProjects.php'><button>Retour aux projets</button></a></main>";
 ?>
 
+<<<<<<< HEAD
 <html>
     <head>
         <meta charset="UTF-8">
@@ -35,4 +40,7 @@ echo "Votre projet a bien été supprimé. <a href='allProjects.php'><button>Ret
             </nav>
         </header>
     </body>
+=======
+</body>
+>>>>>>> main
 </html>

@@ -1,22 +1,38 @@
 <?php 
+$titrePage = "Voir le projet";
+include_once "../header.php";
 include_once '../functions/projects.php';
 include_once '../functions/comments.php';
+include_once '../functions/profils.php';
+include_once '../functions/categories.php';
 
 $id = $_GET["id"];
 $project = getProjetByID($id);
+$titrePage = $project['titre'];
+$categories = getCategoriesByProject($id);
 
-if (isset($_POST['sendComment'])) {
-
-    $refUser = $_POST['refUser'];
-    $message = $_POST['message'];
-
-    //ajouter commentaire || ATTENTION : test : USER=1 (car pas de user implémenté encore)
-    addComment($message, 1, $id);
-}
-$comments = getCommentsOfProject($id);
 
 ?>
 
+<main>
+    <a href="allProjects.php"><button id="retour">Retour aux projets</button></a>
+    <?php
+        $myDiv = "<h1>".$project['titre']."</h1><div class='categories' style='display:flex;'>";
+        foreach ($categories as $aCat) {
+            $myDiv .= "<div style='border:1px solid black; padding:10px;margin:0 10px;'>".$aCat['nomCat']."</div>";
+        }        
+        $myDiv .= "</div><p>Publié le : ".$project['datePubli']."</p>";
+        $myDiv .= "<p>Présentation : ".$project['presentation']."</p>";
+        $myDiv .= "<p>Pour le : ".$project['deadline']."</p>";
+        $myDiv .= "<p>Cadre : ".$project['cadre']."</p>";
+
+        echo $myDiv;
+    
+        echo "<a href='updateProject.php?id=".$id."'><button>Modifier</button></a> "; 
+        echo "<a href='deleteProject.php?id=".$id."'><button id='supprimer'>Supprimer</button></a>"; 
+    ?>
+
+<<<<<<< HEAD
 <html>
     <head>
         <meta charset="UTF-8">
@@ -48,40 +64,52 @@ $comments = getCommentsOfProject($id);
                 </ul>
             </nav>
         </header>
+=======
+    <h2>Commentaires</h2>
+    <h3>Ajouter un commentaire</h3>
+    <form action="oneProject.php?id=<?php echo $id; ?>" method="POST">
+        <?php include_once "../comments/formComment.php"; ?>
+    </form>
 
-        <main>
-            <a href="allProjects.php"><button id="retour">Retour aux projets</button></a>
-            <?php 
-                $myDiv = "<h1>".$project['titre']."</h1>";
-                $myDiv .= "<p>Publié le : ".$project['datePubli']."</p>";
-                $myDiv .= "<p>Présentation : ".$project['presentation']."</p>";
-                $myDiv .= "<p>Pour le : ".$project['deadline']."</p>";
-                $myDiv .= "<p>Cadre : ".$project['cadre']."</p>";
+    <?php 
+    
+if (isset($_POST['sendComment'])) {
+>>>>>>> main
 
-                echo $myDiv;
-            
-                echo "<a href='updateProject.php?id=".$id."'><button>Modifier</button></a> "; 
+    $refUser = $_POST['refUser'];
+    $message = $_POST['message'];
 
-                echo "<a href='deleteProject.php?id=".$id."'><button id='supprimer'>Supprimer</button></a>"; 
-            ?>
+    $idUserExists = false; 
+    $users = getAllMembers();
 
-            <h2>Commentaires</h2>
-            <h3>Ajouter un commentaire</h3>
-            <form action="oneProject.php?id=<?php echo $id; ?>" method="POST">
-                <?php include_once "../comments/formComment.php"; ?>
-            </form>
+    foreach($users as $unUser) {
+        if ($unUser['idUser'] == $refUser) {
+            $idUserExists = true;
+            break;
+        }
+    }
+    if ($idUserExists) {
+        addComment($message, $refUser, $id);
+    }
+    else {
+        echo "<p>Veuillez entrer un ID utilisateur existant.</p>";
+    }
+}
 
-            <?php 
-                foreach ($comments as $aComment) {
-                    $htmlComment = "<div class='comment'>";
-                    $htmlComment .= "<p>Auteur (ID pour l'instant) : ".$aComment['RefUser']."</p>";
-                    $htmlComment .= "<p>Date : ".$aComment['dateComment']."</p>";
-                    $htmlComment .= "<p>Message : ".$aComment['message']."</p>";
-                    $htmlComment .= "</div><a href='../comments/updateComment.php?id=".$aComment['idComment']."'><button>Modifier</button></a><a href='../comments/deleteComment.php?id=".$aComment['idComment']."'><button>Supprimer</button></a>";
+$comments = getCommentsOfProject($id);
 
-                    echo $htmlComment;
-                }
-            ?>
-        </main>
-    </body>
+        foreach ($comments as $aComment) {
+            $author = getMemberByComment($aComment['idComment']);
+
+            $htmlComment = "<div class='comment'>";
+            $htmlComment .= "<p>".$author['prenom']." ".$author['nom']."</p>";
+            $htmlComment .= "<p>Date : ".$aComment['dateComment']."</p>";
+            $htmlComment .= "<p>Message : ".$aComment['message']."</p>";
+            $htmlComment .= "</div><a href='../comments/updateComment.php?idComment=".$aComment['idComment']."'><button>Modifier</button></a><a href='../comments/deleteComment.php?idComment=".$aComment['idComment']."'><button>Supprimer</button></a>";
+
+            echo $htmlComment;
+        }
+    ?>
+</main>
+</body>
 </html>

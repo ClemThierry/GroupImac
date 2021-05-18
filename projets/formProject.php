@@ -4,6 +4,8 @@ $titre='';
 $presentation='';
 $deadline='';
 $cadre='';
+$idUser='';
+$categSelected='';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -13,6 +15,8 @@ if (isset($_GET['id'])) {
     $presentation=$projet['presentation'];
     $deadline=$projet['deadline'];
     $cadre=$projet['cadre'];
+    $idUser=$projet['RefAuteurProjet'];
+    $categSelected=getCategoriesByProject($id);
 }
 
 ?>
@@ -32,19 +36,39 @@ if (isset($_GET['id'])) {
     <label for="cadre">Cadre : *</label>
     <select id="cadre" name= "cadre" required>
         <option value="">-- choisir un cadre --</option>
-        <option value="scolaire">scolaire</option>
-        <option value="personnel">personnel</option>
-        <option value="professionnel">professionnel</option>
+        <option value="scolaire" <?php if ($cadre == "scolaire") {echo " selected";} ?>>scolaire</option>
+        <option value="personnel"<?php if ($cadre == "personnel") {echo " selected";} ?>>personnel</option>
+        <option value="professionnel"<?php if ($cadre == "professionnel") {echo " selected";} ?>>professionnel</option>
     </select>
 
-    
-    <!-- Attention : cette partie n'a pas encore été implémentée -->
-    <label for="jeRecherche">Je recherche *</label>
-    <textarea name="jeRecherche" id='jeRecherche' required>Types de compétences et/ou points forts, séparés par des points-virgules (ex : montage; caméra; etc.) </textarea>
+    <label for="add-nom">N° étudiant : *</label>
+    <input type="number" name="idUser" id='idUser' maxlength="10"
+    <?php 
+        if (isset($_GET['id'])){
+            echo "value='".$idUser."'"; 
+            echo "disabled='disabled'";
+        }
+    ?> required>
 
-    <label for="input-membres">Membres du groupe *</label>
-    <textarea name="membres" id='membres' required>Membres actuels du groupe, séparés par des points-virgules (ex : Prénom Nom; Prénom Nom;...) </textarea>
-    <!-- Attention : jusqu'ici, cette partie n'a pas encore été implémentée -->   
+    <fieldset><legend>Catégorie(s) : </legend>
+    <?php 
+        $categories = getAllCategories();
+        foreach ($categories as $aCat) {
+            $html = "<input type='checkbox' name='categorie[]' value='".$aCat['idCat']."' id='".$aCat['idCat']."'";
 
+            if (!empty($categSelected)) {
+                foreach($categSelected as $CatSel) {
+                    if ($CatSel['idCat'] == $aCat['idCat']) {
+                        $html .= " checked";
+                    }
+                }
+            }
+
+            $html .=">";
+            $html .= "<label for='".$aCat['idCat']."'>".$aCat['nomCat']."</label>";
+            echo $html;
+        }
+    ?>
+    </fieldset>
     <input type="submit" name='publier' id="publier">
 </fieldset>

@@ -32,6 +32,7 @@ Enjoy <3
     - Voir tous les commentaires d'un projet 
     - Supprimer un commentaire 
     - Modifier un commentaire
+    - Supprimer tous les commentaires d'un projet quand on supprime ledit projet
 
 - Assemblage
     - Liaison projets & commentaires 

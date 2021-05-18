@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ------------------------------------------------------------- */
 /* ------------------------- ENSEMBLE -------------------------- */
 /* ------------------------------------------------------------- */
@@ -7,9 +8,23 @@
 }
 
 body {
+=======
+/*
+body {
+    //font-family: 'Source code pro', Calibri, serif;
     margin: 0px;
     padding: 0px;
 }
+nav {
+    width: 100%;
+    background-color: #424558;
+}
+nav ul {
+>>>>>>> main
+    margin: 0px;
+    padding: 0px;
+}
+<<<<<<< HEAD
 
 /* ------------------------------------------------------------- */
 /* -------------------------- HEADER --------------------------- */
@@ -17,6 +32,16 @@ body {
 
 header {
     background-color: lightblue;
+=======
+nav li {
+    list-style-type: none;
+    float: left;
+}
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 20px 30px;
+>>>>>>> main
     color: #FFF;
     position: fixed;
     float: left;
@@ -24,6 +49,7 @@ header {
     height: 100%;
     overflow: hidden;
 }
+<<<<<<< HEAD
 
 .title {
     max-width: 100%;
@@ -45,13 +71,61 @@ nav li {
 
 nav li::marker {
     unicode-bidi: isolate;
+=======
+menu-voir-projet:hover{
+    border-top: 5px solid #e44d26;
+    background-color: RGBa(228,77,38,0.15);
+}
+menu-ajout-projet:hover{
+    border-top: 5px solid #0070bb;
+    background-color: RGBa(000,112,192,0.15);
+}
+menu-savoir-plus:hover{
+    border-top: 5px solid #f1dc4f;
+    background-color: RGBa(241,211,79,0.15);
+}
+menu-profil:hover{
+    border-top: 5px solid #BBB;
+    background-color: RGBa(220,220,220,0.15);
+}
+nav li:hover a{
+    padding: 15px 30px 20px 30px;
+}
+.table{
+    display: table;
+    margin: 0 auto;
+>>>>>>> main
 }
 
+<<<<<<< HEAD
 nav ul {
     margin: 10%;
-    padding: 0px;
+=======
+#profil-perso {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background: rgb(173, 216, 230);
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    min-width: 300px;
 }
 
+#profil-perso>* {
+    margin: auto;
+}
+
+body {
+    margin: 0px;
+>>>>>>> main
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    min-height: 100vh;
+}
+
+<<<<<<< HEAD
 nav a {
     display: inline-block;
     text-decoration: none;
@@ -85,3 +159,36 @@ footer p {
     margin: 10px;
     color: #FFF;
 }
+=======
+header {
+    background-color: lightblue;
+    padding: 10px;
+}
+
+main {
+    padding: 20px;
+}
+
+#all {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.oneProject {
+    border: 1px solid black;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+>>>>>>> main
