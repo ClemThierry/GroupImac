@@ -2,7 +2,7 @@
     $titrePage = "Tous les projets";
     include_once "../header.php"; 
 
-    include_once '../functions/projects.php';
+    include_once '../functions/includes.php';
 
     $allProjects = getAllProjets();
 

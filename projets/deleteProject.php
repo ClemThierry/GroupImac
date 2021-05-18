@@ -3,8 +3,7 @@
     $titrePage = "Supprimer le projet";
     include_once "../header.php"; 
 
-    include_once '../functions/projects.php';
-    include_once '../functions/categories.php';
+    include_once '../functions/includes.php';
 
     deleteCommentFromProjet($id);
     deleteCategorieFromProject($id);

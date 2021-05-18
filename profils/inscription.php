@@ -1,8 +1,7 @@
 <?php 
     $titrePage = "S'inscrire";
     include_once "../header.php"; 
-    include_once "../functions/profils.php";
-    include_once '../functions/categories.php';
+    include_once '../functions/includes.php';
 ?>
 <main>
     <h1>S'inscrire</h1>

@@ -1,8 +1,7 @@
 <?php 
     $titrePage = "Modifier le profil";
     include_once "../header.php";
-    include_once "../functions/profils.php";
-    include_once "../functions/categories.php";
+    include_once '../functions/includes.php';
 
     $id = $_SESSION['personneConnectee']['idUser'];
     $profil = getMemberById($id);

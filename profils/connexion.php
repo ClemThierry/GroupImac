@@ -1,7 +1,7 @@
 <?php 
     $titrePage = "Connexion";
     include_once "../header.php";
-    include_once "../functions/profils.php";
+    include_once '../functions/includes.php';
 ?>
 <main>
     <h1>Connexion</h1>
@@ -9,7 +9,7 @@
         <label for="id">Identifiant :</label>
         <input type="text" name="id"><br>
         <label for="mdp">Mot de passe :</label>
-        <input type="password" name="mdp"><br>
+        <input type="mdp" name="mdp"><br>
         <button type="submit" name="envoyer">Connexion</button>
     </form>
 

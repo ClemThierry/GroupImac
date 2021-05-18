@@ -1,7 +1,7 @@
 <?php
 $titrePage = "Membres enregistrés";
 include_once "../header.php";
-include_once "../functions/profils.php";
+include_once '../functions/includes.php';
 
 $members = getAllMembers();
 $test = 0;

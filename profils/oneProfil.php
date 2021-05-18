@@ -1,8 +1,7 @@
 <?php 
     $titrePage = "Profil";
     include_once "../header.php";
-    include_once "../functions/profils.php";
-    include_once "../functions/categories.php";
+    include_once '../functions/includes.php';
     if (isset($_GET['id'])) {
 
         $id = $_GET['id']; 
@@ -18,12 +17,10 @@
     $promo=$profil['promo'];
     $discord=$profil['discord'];
     $presentation=$profil['presentation'];
-    
+
     $sesProjets = getProjectByMember($id);
     $sesComments = getCommentByMember($id);
     $categories = getCategoriesByMember($id);
-
-
 ?>
 
 <main>
@@ -48,7 +45,7 @@
 
         foreach ($sesProjets as $unProjet) {
             echo "<div class='oneProject'><h3>".$unProjet['titre']."</h3></div>";
-        } 
+        }
         ?>
     </div>
 

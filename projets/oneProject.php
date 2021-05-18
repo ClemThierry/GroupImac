@@ -1,10 +1,7 @@
 <?php 
 $titrePage = "Voir le projet";
 include_once "../header.php";
-include_once '../functions/projects.php';
-include_once '../functions/comments.php';
-include_once '../functions/profils.php';
-include_once '../functions/categories.php';
+include_once '../functions/includes.php';
 
 $id = $_GET["id"];
 $project = getProjetByID($id);
