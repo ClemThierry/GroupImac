@@ -5,47 +5,6 @@ $titrePage = "Accueil";
 <!DOCTYPE html>
 <html>
 
-<<<<<<< HEAD:index.html
-    <head>
-        <meta charset="UTF-8">
-        <title>Group'IMAC | Accueil</title>
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
-    </head>
-
-    <body>
-        <header>
-            <div class="title">
-                <h1>GROUP'</h1>
-                <h1>IMAC</h1>
-            </div>
-            <h2>Trouve ton groupe en toute simplicité !</h2>
-            
-            <nav>
-                <ul>
-                    <li class="menu-accueil"><a href="index.html">Accueil</a></li>
-                    <li class="menu-voir-projet"><a href="projets/allProjects.php">Voir les projets</a></li>
-                    <li class="menu-ajout-projet"><a href="projets/addproject.php">Ajouter un projet</a></li>
-                    <li class="menu-profil"><a href="connexion.php">Se connecter</a></li>
-                </ul>
-            </nav>
-        </header>
-        
-        <main>
-            <h2>Group'IMAC ? C'est quoi ?</h2>
-
-            <p>Lorem ipsum dolor explicatif. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <p>Lorem ipsum dolor explicatif. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <iframe src="https://drive.google.com/file/d/1rfih7WsCOPT0QkRWlsjr2TD9rpmwwHCr/preview" width="720" height="480"></iframe>
-        </main>
-
-        <footer>
-            <p>Par Audrey Martin, Julia Raybaudi, Clémence Thierry, Clémence Voegelé & Yvan Smorag | IMAC 2023</p>
-        </footer>
-    </body>
-=======
 <head>
     <meta charset="UTF-8">
     <title>Group'IMAC | <?php echo $titrePage; ?></title>
@@ -92,6 +51,5 @@ $titrePage = "Accueil";
     </div>
 
 </body>
->>>>>>> main:index.php
 
 </html>
