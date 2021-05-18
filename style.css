@@ -1,52 +1,97 @@
-/*
-body {
-    //font-family: 'Source code pro', Calibri, serif;
-    margin: 0px;
-    padding: 0px;
+/* ------------------------------------------------------------- */
+/* ------------------------- ENSEMBLE -------------------------- */
+/* ------------------------------------------------------------- */
+
+* {
+    font-family: 'Roboto', sans-serif;
 }
-nav {
+
+#all {
+    display: flex;
+    flex-flow: row wrap;
     width: 100%;
-    background-color: #424558;
 }
-nav ul {
+
+body {
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    min-height: 100vh;
 }
+
+/* ------------------------------------------------------------- */
+/* -------------------------- HEADER --------------------------- */
+/* ------------------------------------------------------------- */
+
+header {
+    background-color: lightblue;
+    padding: 10px;
+}
+
+.title {
+    max-width: 100%;
+    margin: 10%;
+}
+
+header h1 {
+    margin: 0px;
+}
+
+header h2 {
+    max-width: 100%;
+    margin: 10%;
+}
+
 nav li {
+    text-decoration: none;
     list-style-type: none;
-    float: left;
 }
+
+nav li::marker {
+    unicode-bidi: isolate;
+}
+
+nav ul {
+    margin: 10%;
+    padding: 0px;
+}
+
 nav a {
     display: inline-block;
+    margin: 10%;
+}
+
+a {
+    color: black;
     text-decoration: none;
-    padding: 20px 30px;
+}
+
+/* ------------------------------------------------------------- */
+/* --------------------------- MAIN ---------------------------- */
+/* ------------------------------------------------------------- */
+
+main {
+    padding: 20px;
+}
+
+/* ------------------------------------------------------------- */
+/* -------------------------- FOOTER --------------------------- */
+/* ------------------------------------------------------------- */
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+footer p {
+    margin: 10px;
     color: #FFF;
 }
-menu-voir-projet:hover{
-    border-top: 5px solid #e44d26;
-    background-color: RGBa(228,77,38,0.15);
-}
-menu-ajout-projet:hover{
-    border-top: 5px solid #0070bb;
-    background-color: RGBa(000,112,192,0.15);
-}
-menu-savoir-plus:hover{
-    border-top: 5px solid #f1dc4f;
-    background-color: RGBa(241,211,79,0.15);
-}
-menu-profil:hover{
-    border-top: 5px solid #BBB;
-    background-color: RGBa(220,220,220,0.15);
-}
-nav li:hover a{
-    padding: 15px 30px 20px 30px;
-}
-.table{
-    display: table;
-    margin: 0 auto;
-}
-*/
+
+/* ------------------------------------------------------------- */
+/* -------------------------- COMPTE --------------------------- */
+/* ------------------------------------------------------------- */
 
 #profil-perso {
     position: absolute;
@@ -63,42 +108,9 @@ nav li:hover a{
     margin: auto;
 }
 
-body {
-    margin: 0px;
-    padding: 0px;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    min-height: 100vh;
-}
-
-header {
-    background-color: lightblue;
-    padding: 10px;
-}
-
-main {
-    padding: 20px;
-}
-
-#all {
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-}
-
 .oneProject {
     border: 1px solid black;
     width: 300px;
     margin: 10px;
     padding: 10px;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
 }
