@@ -8,7 +8,7 @@
     <form action="authentification.php" method="post">
         <label for="id">Identifiant :</label>
         <input type="text" name="id"><br>
-        <label for="mdp">Mot de passe :</label>
+        <label for="password">Mot de passe :</label>
         <input type="password" name="mdp"><br>
         <button type="submit" name="envoyer">Connexion</button>
     </form>
