@@ -12,11 +12,13 @@
         $id = $_SESSION['personneConnectee']['idUser'];
         $profil = $_SESSION['personneConnectee'];    
     }
+
     $nom=$profil['nom'];
     $prenom=$profil['prenom'];
     $promo=$profil['promo'];
     $discord=$profil['discord'];
     $presentation=$profil['presentation'];
+    
     $sesProjets = getProjectByMember($id);
     $sesComments = getCommentByMember($id);
     $categories = getCategoriesByMember($id);
@@ -27,8 +29,7 @@
 <main>
     <div id="profil">
     <?php           
-        $myDiv = "<h1>".$prenom." ".$nom."</h1><div class='categories' style='display:flex;'>";
-        $myDiv = "<h1>".$profil['nom']."</h1><div class='categories' style='display:flex;'>";
+        $myDiv = "<h1>".$profil['prenom']." ".$profil['nom']."</h1><div class='categories' style='display:flex;'>";
         foreach ($categories as $aCat) {
             $myDiv .= "<div style='border:1px solid black; padding:10px;margin:0 10px;'>".$aCat['nomCat']."</div>";
         }

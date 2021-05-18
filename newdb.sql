@@ -6,6 +6,7 @@ CREATE TABLE `utilisateur` (
   `idUser` INT PRIMARY KEY NOT NULL,
   `nom` VARCHAR(30),
   `prenom` VARCHAR(30),
+  `mdp` VARCHAR(32) NOT NULL,
   `promo` VARCHAR(6),
   `discord` VARCHAR(100),
   `presentation` TEXT
