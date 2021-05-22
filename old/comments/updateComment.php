@@ -1,7 +1,7 @@
 <?php 
     $titrePage = "Modifier le commentaire";
     include_once "../header.php";
-    include_once '../functions/comments.php';
+    include_once '../functions/includes.php';
 
     $id = $_GET["idComment"];
     $comment = getCommentById($id);

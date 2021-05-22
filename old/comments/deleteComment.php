@@ -1,7 +1,7 @@
 <?php 
     $titrePage = "Supprimer le commentaire";
     include_once "../header.php"; 
-    include_once "../functions/comments.php";
+    include_once "../functions/includes.php";
 
     $idComment = $_GET['idComment'];
     $comment = getCommentById($idComment);

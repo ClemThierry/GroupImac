@@ -6,7 +6,7 @@
 <main>
     <h1>Connexion</h1>
     <form action="authentification.php" method="post">
-        <label for="id">Identifiant :</label>
+        <label for="id">N° étudiant :</label>
         <input type="text" name="id"><br>
         <label for="mdp">Mot de passe :</label>
         <input type="password" name="mdp"><br>

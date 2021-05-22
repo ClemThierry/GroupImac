@@ -20,8 +20,6 @@ Enjoy <3
     - Ajouter un projet : fait 
     - Supprimer un projet : fait 
     - Modifier un projet : fait 
-    - Implémentation des points manquants des formulaires
-    - Gestion des catégories = types projets 
 
 - Partie "Profil"
     - Ajouter un profil
@@ -38,6 +36,16 @@ Enjoy <3
 
 - Assemblage
     - Liaison projets & commentaires 
+
+## Ce qui est en cours
+- CSS
+
+## Ce qui reste à faire 
+- Partie "Projets"
+    - Implémentation des points manquants des formulaires
+    - Gestion des catégories = types projets 
+
+- Assemblage 
     - Lier projets et profil 
     - Lier profil et commentaires 
     - Lier commentaire & catégories 
@@ -48,12 +56,6 @@ Enjoy <3
 
 - Autre 
     - Menu php : à intégrer à toutes les pages de façon dynamique (dans un fichier à part, pour éviter les copiers collers redondants)
-
-## Ce qui est en cours
-- CSS
-
-## Ce qui reste à faire 
-- Autre 
     - Page d'accueil : écrire blabla 
 
 ## Ce qu'on laisse de côté pour l'instant
