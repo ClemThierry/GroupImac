@@ -33,7 +33,10 @@ function addCatToProfil($form) {
 // modifier un profil 
 function updateAProfil($form, $id) {
     $profil = json_decode($form, true);
-    return json_encode(updateMember($id, $profil['nom'], $profil['prenom'], $profil['mdp'], $profil['promo'], $profil['discord'], $profil['presentation']));
+    if ($profil['mdp'] == $_SESSION['personneConnectee']['mdp']) {
+        return json_encode(updateMember($id, $profil['nom'], $profil['prenom'], $profil['mdp'], $profil['promo'], $profil['discord'], $profil['presentation']));
+    }
+    return json_encode(updateMember($id, $profil['nom'], $profil['prenom'], md5($profil['mdp']), $profil['promo'], $profil['discord'], $profil['presentation']));
 }
 
 
