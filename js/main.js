@@ -1,7 +1,3 @@
-/* --------------------------------------------- */ 
-/* -------------- NE PAS TOUCHER --------------- */ 
-/* --------------------------------------------- */ 
-
 Document.prototype.ready = callback => {
 	if(callback && typeof callback === 'function') {
 		document.addEventListener("DOMContentLoaded", () =>  {

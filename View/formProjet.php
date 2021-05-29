@@ -1,4 +1,5 @@
 <?php include_once "../Model/categories.php"; ?>
+
 <fieldset>
     <legend>Ton projet</legend>
     <label for="<?php echo $string; ?>-titre">Titre du projet : *</label>
@@ -19,7 +20,15 @@
     </select>
 
     <label for="<?php echo $string; ?>-idUser">N° étudiant : *</label>
-    <input type="number" name="<?php echo $string; ?>-idUser" id='<?php echo $string; ?>-idUser' maxlength="10" required <?php if ($string=="update") {echo "disabled";} ?>>
+    <input type="number" name="<?php echo $string; ?>-idUser" id='<?php echo $string; ?>-idUser' maxlength="10" 
+    <?php 
+        if (isset($_SESSION['personneConnectee'])){
+            $prof = $_SESSION['personneConnectee'];
+            $id = $prof['idUser'];
+            echo "value='".$id."'"; 
+        }
+        if ($string=="update") {echo "disabled";}         
+    ?> required>
 
         <fieldset>
             <legend>Catégorie(s) : </legend>

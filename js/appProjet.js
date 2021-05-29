@@ -12,7 +12,7 @@ document.ready( () => {
 	hideDiv('viewProjet');
 	hideDiv('updateProjet');
 
-	// tous les projets 
+	// get tous les projets 
 	fetch("../router.php/projets", {  method: 'GET'})
 		.then( response => response.json() )
 		.then( data => {
@@ -37,7 +37,7 @@ function voirProjet(id) {
 		.catch(error => { console.log(error) });
 }
 
-// récupère le projet à modifier
+// récupérer le projet à modifier
 function recupProjetToUpdate(id) {
 	hideDiv("viewProjet");
 	showDiv("updateProjet");
@@ -50,10 +50,11 @@ function recupProjetToUpdate(id) {
 	.catch(error => { console.log(error) });
 }
 
+// poster un projet
 document.getElementById('publish').onclick = event => {
 	event.preventDefault();
 	form = recupForm("input");
-	// post du projet 
+
 	fetch('../router.php/projets', { method: 'POST', body: JSON.stringify(form)})    
 	.then(response => response.json())
     .then (data =>{
@@ -63,11 +64,11 @@ document.getElementById('publish').onclick = event => {
 	hideDiv("addProjet");
 }
 
+// update un projet 
 function modifProjet(id) {
 	event.preventDefault();
     form = recupForm("update");
 
-	// update du projet 
 	fetch('../router.php/projet/' + id, { method: 'UPDATE', body: JSON.stringify(form)})    
 	.then(response => response.json())
     .then (data =>{
@@ -78,6 +79,7 @@ function modifProjet(id) {
 	hideDiv('oneProjet');  
 }
 
+// supprimer un projet
 function removeProjet(id) {
 	fetch("../router.php/projet/" + id, { method: 'DELETE'})
 	.then(response => response.json())
@@ -120,6 +122,7 @@ function displayOneProjet(projet) {
 	displayProjetCat(categ);
 }
 
+// commentaires du projet 
 function displayProjetComments(comments, idProjet) {
 	const list = document.getElementById('viewComments');
 	let content = "";
@@ -134,6 +137,7 @@ function displayProjetComments(comments, idProjet) {
 	list.innerHTML = content;
 }
 
+// catégories du projet 
 function displayProjetCat(categories) {
 	const list = document.getElementById('viewCateg');
 	let content = "<p>Catégorie(s) : | ";
@@ -144,7 +148,7 @@ function displayProjetCat(categories) {
 	list.innerHTML = content;
 }
 
-// données projet à modifier 
+// données du projet à modifier 
 function displayProjetToUpdate(projet) {
 	console.log(projet);
 	let proj = projet.projet;
@@ -162,6 +166,7 @@ function displayProjetToUpdate(projet) {
 	});
 }
 
+// récupération des données du formulaire 
 function recupForm(string) {
     const form = {};
 	form.titre = document.getElementById(string + '-titre').value;
@@ -189,11 +194,11 @@ function recupForm(string) {
 
 /* -------------- REQUETES & JSON -------------- */
 
+// post du commentaire 
 function ajoutComment(idProjet) {
 	event.preventDefault();
 	form = recupCom("inputCom", idProjet);
 
-	// post du commentaire 
 	fetch('../router.php/comments', { method: 'POST', body: JSON.stringify(form)})    
 	.then(response => response.json())
     .then (data =>{
@@ -202,6 +207,7 @@ function ajoutComment(idProjet) {
 	.catch(error => { console.log(error) });
 }
 
+// supprimer un commentaire 
 function delComment(id) {
 	event.preventDefault();
 	fetch("../router.php/comment/" + id, { method: 'DELETE'})
@@ -212,7 +218,7 @@ function delComment(id) {
 	.catch(error => { console.log(error) });
 }
 
-// récupère le projet à modifier
+// récupère le commentaire à modifier
 function recupComToUpdate(id) {
 	showDiv('upComment');
 
@@ -224,11 +230,11 @@ function recupComToUpdate(id) {
 	.catch(error => { console.log(error) });
 }
 
+// modifier le commentaire 
 function modifComment(id, idProj) {
 	event.preventDefault();
     form = recupCom("updateCom", idProj);
 
-	// update du projet 
 	fetch('../router.php/comment/' + id, { method: 'UPDATE', body: JSON.stringify(form)})    
 	.then(response => response.json())
     .then (data =>{
@@ -238,11 +244,11 @@ function modifComment(id, idProj) {
 
 	hideDiv("updateProjet");
 	showDiv("viewProjet");
-
 }
 
 /* ------------- RECUP & AFFICHAGE ------------- */
 
+// récupérer données du form de commentaire 
 function recupCom(string, idProjet) {
     const form = {};
 	form.refUser = document.getElementById(string + '-refUser').value;
@@ -251,6 +257,7 @@ function recupCom(string, idProjet) {
 	return form;
 }
 
+// afficher le commentaire à modifier 
 function displayComToUpdate(comment) {
 	document.getElementById('updateCom-refUser').value = comment.RefUser;
 	document.getElementById('updateCom-message').value = comment.message;
