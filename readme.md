@@ -14,6 +14,7 @@ Enjoy <3
 
 ## Ce qui a été fait 
 - Base de données (surtout pour les tests)
+
 - Partie "Projets" 
     - Voir tous les projets : fait 
     - Voir un seul projet : fait 
@@ -48,15 +49,15 @@ Enjoy <3
 
 - Autre 
     - Menu php : à intégrer à toutes les pages de façon dynamique (dans un fichier à part, pour éviter les copiers collers redondants)
+    - Page d'accueil : écrire paragraphes
+    - CSS
+
 
 ## Ce qui est en cours
-- CSS
+
 
 ## Ce qui reste à faire 
-- Autre 
-    - Page d'accueil : écrire blabla 
 
-## Ce qu'on laisse de côté pour l'instant
 
 ## Lien du site hébergé
 http://perso-etudiant.u-pem.fr/~cvoegele/projets/projets.html

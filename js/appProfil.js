@@ -24,7 +24,7 @@ function displayProfils(profils) {
 	let content = "";
 	profils.forEach(function (profil) {
 		content += "<div class='oneProject' onclick='openProfil(\""+ profil.idUser +"\")'>";
-		content += "<h2>"+ profil.prenom + " "+profil.prenom+"</h2>";
+		content += "<h2>"+ profil.prenom + " "+profil.nom+"</h2>";
 		content += "</div>";
 	});
 	list.innerHTML = content;

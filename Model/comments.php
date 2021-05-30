@@ -5,7 +5,7 @@
     // sous forme de tableau associatif
     function getCommentsOfProject($id) {
         $co = connection();
-        $req = $co->prepare('SELECT * FROM Commentaire INNER JOIN utilisateur ON refuser = iduser WHERE refprojet = ? ORDER BY idComment');
+        $req = $co->prepare('SELECT * FROM commentaire INNER JOIN utilisateur ON refuser = iduser WHERE refprojet = ? ORDER BY idComment');
         $req->execute(array($id));
         return $req->fetchAll();
     }
