@@ -75,18 +75,23 @@ main {
     padding: 20px;
 }
 
+iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* ------------------------------------------------------------- */
 /* -------------------------- FOOTER --------------------------- */
 /* ------------------------------------------------------------- */
 
 footer {
-    position: absolute;
+    position: fixed;
+    right: 0;
     bottom: 0;
-}
-
-footer p {
-    margin: 10px;
-    color: #FFF;
+    width: 100%;
+    padding: 10px;
+    text-align: right;
 }
 
 /* ------------------------------------------------------------- */
