@@ -60,7 +60,7 @@ Enjoy <3
 
 
 ## Lien du site hébergé
-http://http://perso-etudiant.u-pem.fr/~cvoegele/View/
+http://perso-etudiant.u-pem.fr/~cvoegele/View/
 
 ## Lien de la BDD
 https://phpmyadmin.alwaysdata.com/ (Utilisateur : groupimac | MDP: MotDePasse)
